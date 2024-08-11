@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - EEG Project</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0c1428;
+            color: #fff;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #111; /* Dark background color for top bar */
+        }.slide-image img{
+            object-fit: cover!important;
+            height: 400px!important;
+            width: 100%!important;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .buttons {
+            display: flex;
+        }
+
+        .btn {
+            background-color: #00bfff;
+            color: #fff;
+            font-size: 18px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .btn:hover {
+            background-color: #007acc;
+        }
+
+        .slider-container {
+            margin-top: 20px;
+            position: relative;
+            
+        }
+
+        .slider {
+            display: flex;
+            height:400px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            width: 100%;
+        }
+
+        .slide {
+            flex: 0 0 calc(100% - 20px); /* Adjusted width to account for padding */
+            scroll-snap-align: start;
+            overflow-y: hidden;
+            padding: 10px; /* Reduced padding */
+            margin: 0 5px; /* Reduced margin */
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        /* .slide-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+        } */
+
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        #neuroSlider .slider-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    left: 0; /* Adjusted position to left */
+    margin-top: -50px; /* Moved them a little bit upward */
+}
+
+
+        /* Adjusted for image slider */
+        #imageSlider .slider-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin: 0; /* Adjusted position to left */
+}
+
+        .slider-btn {
+            background-color: #00bfff;
+            color: #fff;
+            font-size: 10px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background-color: #007acc;
+        }
+        .slide h3 {
+    color: #00bfff;}
+    .heading-with-image {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .heading-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+
+        .heading-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .heading-details {
+            flex: 1;
+        }
+        .why-neuro-ad {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .detail-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        .detail-box p {
+            color: #fff;
+        }
+
+        .team-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .member-box {
+            display: inline-block;
+           
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .member-box img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .member-details {
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .supervisor-details {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .supervisor-box {
+            display: inline-block;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .supervisor-box img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .section1 {
+            background-color: black; /* Background color for section 1 */
+         }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="logo">NeuroAd: EEG-Based Personalized Ad Preference Prediction</div>
+        <div class="buttons">
+            <a href="/project" class="btn">Predict</a>
+            <a href="/contact" class="btn">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="slider-container" id="imageSlider">
+        <div class="slider">
+            <div class="slide">
+                <img src="/static/images/about1.jpeg" alt="About 1" class="slide-image">
+            </div>
+            <div class="slide">
+                <img src="/static/images/about2.jpeg" alt="About 2" class="slide-image">
+            </div>
+            <div class="slide">
+                <img src="/static/images/about3.png" alt="About 3" class="slide-image">
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button class="slider-btn" onclick="prevImageSlide()">❮</button>
+            <button class="slider-btn" onclick="nextImageSlide()">❯</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="heading-with-image">
+            <div class="heading-image">
+                <img src="/static/images/pedi.jpeg" alt="EEG Image">
+            </div>
+            <div class="heading-details">
+                <h2>WHAT IS EEG?</h2>
+                <h3>Electroencephalography</h3>
+                <p>An electroencephalogram (EEG) is a noninvasive test that records electrical patterns in your brain. The test is used to help diagnose conditions<br>
+                   such as seizures, epilepsy, head injuries, dizziness, headaches, brain tumors and sleeping problems. It can also be used to confirm brain death.<br> 
+                   The billions of nerve cells in your brain produce very small electrical signals that form patterns called brain waves. During an EEG, small electrodes<br> 
+                   and wires are attached to your head. The electrodes detect your brain waves and the EEG machine amplifies the signals and records them in a wave<br> 
+                   pattern on graph paper or a computer screen.</p>
+            </div>
+        </div>
+        <div class="heading-with-image">
+            <div class="heading-image">
+                <img src="/static/images/ad.png" alt="ad Image">
+            </div>
+            <div class="heading-details">
+                <h2>What is Ad?</h2>
+                <h3>Advertisement</h3>
+                <p>Advertising is an expressway of message to encourage an followership for making clinch resolution about a product or indulgence<br> 
+                   and conveying information to observers. It's considered as a vital and essential component for the profitable excrescency of<br> 
+                   the marketers and companies( Ryans, 1996). Advertising is generally a paid shape of exposure or creation by some guarantor that<br> 
+                   reaches through colorful traditional media similar as TV, review, and marketable radio announcement.
+
+                </p>
+            </div>
+        </div>
+         
+        <div class="heading-with-image">
+            <div class="heading-image">
+                <img src="/static/images/what_is_neuroad_image.jpg" alt="NeuroAd Image">
+            </div>
+            <div class="heading-details">
+                <h2>What is NeuroAd</h2>
+                <p>Our design seeks to harness the power of EEG technology to understand bystander responses to announcements. By covering brainwave<br> 
+                    exertion during announcement exposure, we aim to unveil the emotional and cognitive responses that drive human engagement. This <br>
+                    innovative approach allows us to conform advertising strategies, icing dispatches reverberate genuinely with the target followership.<br> 
+                    As we embark on this cognitive revolution, the emulsion of neuroscience and advertising promises a future where strong matches<br> 
+                    aren't just seen and heard but felt at a profound position. We  explore the measureless possibilities as we review the art of<br> 
+                    advertising through the EEG technology.
+
+                </p>
+                <!-- Add more details about NeuroAd here -->
+            </div>
+        </div>
+
+        <div class="heading-with-image">
+            <div class="heading-image">
+                <img src="/static/images/methodology_image.jpeg" alt="Methodology Image">
+            </div>
+            <div class="heading-details">
+                <h2>Methadology</h2>
+                <p>Let’s embarking on the journey of project development involves several crucial stages that demand careful consideration
+                    <ul><b>1-Planning</b> <br>
+                        A meticulous review of related projects in the research domain informs the planning phase,  Learning from the successes and challenges<br> 
+                        of previous endeavors ensures the development of a  robust research design. 
+                    </ul>
+                    <ul><b>2-Ads Collection</b><br>
+                        First step to perform analysis is to collect the ad already revolving in the market.So in this project we first collected  random 15 Ads<br> 
+                        from the internet. That might have been successful in reaching  and attarcting the audience or failed to do so
+                    </ul>
+                    <ul><b>3-Short Listing</b><br>
+                        After collecting  random Ads we performed an survey to short-list 6 Ads such that 3 Ads had highest rating and 3 Ads had lowest rating
+                        
+                    </ul>
+                    <ul><b>4-Data Collection </b><br>
+                        In our scrupulous hunt to unravel the complications of cognitive responses, the process of Muse EEG headset data collection unfolds<br> 
+                        in a series of detailed ways. 
+
+                    </ul>
+                    <ul><b>5-Data Mining</b><br>
+                        As we transition from the raw data collection phase, the journey continues with a meticulous process of data cleaning. This critical step<br> 
+                        ensures that the information extracted from the Muse EEG headset's recordings is polished and refined, ready for the nuanced analysis<br> 
+                        that will unveil the secrets of cognitive responses.
+                        
+
+                    </ul>
+                    <ul><b>6-Identifying Requirements</b><br>  
+Careful consideration is given to the hardware, software, and human resources essential for successful data collection and analysis.<br> 
+The choice of EEG headsets, data  analysis tools, and machine learning frameworks is crucial for the project's success. So according<br> 
+to our requirements and objectives of the projects we will collect the information of the following components as;   
+
+<ul>•	EEG Sensor or Machine (MUSE Brain Sensing Headset)  </ul>
+<ul>•	ML frameworks</ul>
+<ul>•	Data Analysis Tools (Excel)</ul>
+	
+
+                    </ul>
+                    <ul><b>7-Analysis Of Market</b><br>  
+                        Understanding the current advertising landscape and market trends is critical. This information shapes the project to align with industry<br> 
+                        needs and ensures its relevance and applicability in the real-world advertising environment.
+                        
+
+                    </ul>
+                    <ul>
+                        <b>8-Design Phase</b><br> 
+The experimental design is carefully outlined to delineate the sequence of activities, starting from participant recruitment to data analysis.<br> 
+The structure of the experiment, including the order and intervals of ad exposures, is defined to ensure controlled conditions for accurate data<br> 
+collection. In the intricate dance of neuroscience and technology, the design phase of our EEG headset project plays a pivotal role in shaping the<br> 
+trajectory of our cognitive exploration. This comprehensive guide unveils the meticulous process involved in crafting the blueprint for decoding the<br> 
+human mind
+
+                    </ul>            
+                
+                </p>
+            </div>
+        </div>
+
+        <div class="heading-with-image">
+            <div class="heading-image">
+                <img src="/static/images/objective_image.png" alt="Objective Image">
+            </div>
+            <div class="heading-details">
+                <h2>Objective</h2>
+                <p>The objectives of project is to
+                    <ul>•	collecting and analyzing data from distinct age groups</ul> 
+                    <ul>•	integrating user feedback with EEG data</ul>
+                    <ul>•	developing a predictive model for personalized ad recommendations</ul>
+                    </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="why-neuro-ad">
+        <h2 style="text-align: center;">Why NeuroAd</h2>
+        <div class="detail-box">
+            <p>The NeuroAd project offers a revolutionary approach to advertising by integrating EEG technology with explicit user feedback to create more personalized and nuanced advertising strategies. Here's why NeuroAd should be considered:</p>
+            <div class="slider-container" id="neuroSlider">
+                <div class="slider">
+                    <div class="slide">
+                        <h3>Personalized Strategies</h3>
+                        <p>Traditional advertising methods often rely on demographic data for targeting audiences, leading to a one-size-fits-all approach that may not capture individual preferences effectively. NeuroAd's innovative methodology combines EEG headset data with explicit user feedback to tailor advertising strategies based on individual responses, resulting in more personalized and engaging campaigns.</p>
+                    </div>
+                    <div class="slide">
+                        <h3>Insight into Subconscious Responses</h3>
+                        <p>By utilizing EEG technology, NeuroAd delves into subconscious responses to advertisements, providing insights into emotional and cognitive reactions that drive human engagement. This deeper understanding of audience responses allows advertisers to fine-tune their campaigns for maximum impact, ensuring that ads resonate genuinely with the target audience.</p>
+                    </div>
+                    <div class="slide">
+                        <h3>Cost-Effective and Precise</h3>
+                        <p>Traditional testing methodologies for ad campaigns, such as focus groups and user surveys, can be resource-intensive and subject to biases. NeuroAd offers a cost-effective and precise alternative by leveraging EEG technology to capture subconscious reactions without relying solely on self-reported user feedback. This approach enables advertisers to optimize content more efficiently, leading to better returns on investment.</p>
+                    </div>
+                    <div class="slide">
+                        <h3>Predictive Modeling</h3>
+                        <p>NeuroAd aims to develop predictive models for personalized ad recommendations by analyzing EEG data from distinct age groups and integrating it with user feedback. These predictive models will enable advertisers to forecast the appeal of advertisements to their target audience accurately, empowering them to optimize their campaigns for maximum effectiveness.</p>
+                    </div>
+                    <div class="slide">
+                        <h3>Summary</h3>
+                        <p>In summary, NeuroAd represents a paradigm shift in advertising by harnessing the power of EEG technology to understand and leverage subconscious responses to advertisements. By offering personalized strategies, insight into subconscious responses, cost-effective solutions, and predictive modeling capabilities, NeuroAd promises to revolutionize the advertising industry and create more impactful and engaging campaigns.</p>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" onclick="prevNeuroSlide()">❮</button>
+                    <button class="slider-btn" onclick="nextNeuroSlide()">❯</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        <span style="margin-left: 580px;""> <a href="/project" class="btn">Lets Predict</a></span>
+    </div>
+    <div class="section1">
+    <div class="team-container">
+        <h2>About us</h2>
+        <div class="team-members">
+            <div class="member-box">
+                <img src="/static/images/member1.jpg" alt="Member 1">
+                <div class="member-details">
+                    <h3>Saif Ur Rehman</h3>
+                    <p>Contact: 0317-5724162</p>
+                    <p>Email: 20-cp-37@students.uettaxila.edu.pk</p>
+                    <p>Profession: Computer Engineer </p>
+                </div>
+            </div>
+            <div class="member-box">
+                <img src="/static/images/member2.jpeg" alt="Member 2">
+                <div class="member-details">
+                    <h3>Muhammad Sarmad Qadir</h3>
+                    <p>Contact: 0332-6679047</p>
+                    <p>Email: 20-cp-40@students.uettaxila.edu.pk</p>
+                    <p>Profession: Computer Engineer </p>
+
+                </div>
+            </div>
+            <div class="member-box">
+                <img src="/static/images/member3.jpeg" alt="Member 3">
+                <div class="member-details">
+                    <h3>Malik M.Hashir Awan</h3>
+                    <p>Contact: 123-456-7890</p>
+                    <p>Email: 20-cp-76@students.uettaxila.edu.pk</p>
+                    <p>Profession: Computer Engineer </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="supervisor-details">
+        <h2>Supervisor Details</h2>
+        <div class="team-members">
+            <div class="supervisor-box">
+                <img src="/static/images/supervisor.jpeg" alt="Supervisor">
+                <div class="member-details">
+                    <p>Name: Dr. Noshina Shamir  </p>
+                    <p>Contact: 0300-0000000</p>  
+                    <p>Email: noshina.shamir@uettaxila.edu.pk</p> 
+                    <p>Profession: Neuroscientist</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        // For Why NeuroAd slider
+        const neuroSlides = document.querySelectorAll('.why-neuro-ad .slide');
+        let currentNeuroSlide = 0;
+    
+        function showNeuroSlide(slideIndex) {
+            neuroSlides.forEach((slide, index) => {
+                slide.style.display = 'none';
+                if (index === slideIndex) {
+                    slide.style.display = 'block';
+                }
+            });
+        }
+    
+        function nextNeuroSlide() {
+            currentNeuroSlide++;
+            if (currentNeuroSlide >= neuroSlides.length) {
+                currentNeuroSlide = 0;
+            }
+            showNeuroSlide(currentNeuroSlide);
+        }
+    
+        function prevNeuroSlide() {
+            currentNeuroSlide--;
+            if (currentNeuroSlide < 0) {
+                currentNeuroSlide = neuroSlides.length - 1;
+            }
+            showNeuroSlide(currentNeuroSlide);
+        }
+    
+        // For image slider
+        const imageSlides = document.querySelectorAll('#imageSlider .slide');
+        let currentImageSlide = 0;
+    
+        function showImageSlide(slideIndex) {
+            imageSlides.forEach((slide, index) => {
+                slide.style.display = 'none';
+                if (index === slideIndex) {
+                    slide.style.display = 'block';
+                }
+            });
+        }
+    
+        function nextImageSlide() {
+            currentImageSlide++;
+            if (currentImageSlide >= imageSlides.length) {
+                currentImageSlide = 0;
+            }
+            showImageSlide(currentImageSlide);
+        }
+    
+        function prevImageSlide() {
+            currentImageSlide--;
+            if (currentImageSlide < 0) {
+                currentImageSlide = imageSlides.length - 1;
+            }
+            showImageSlide(currentImageSlide);
+        }
+    
+        // Set interval for automatic sliding
+        setInterval(nextImageSlide, 2000);
+        setInterval(nextNeuroSlide, 3000);
+    </script>
+    </body>
+    
+
+</html>
